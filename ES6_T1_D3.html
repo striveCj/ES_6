@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="application/javascript">
+
+ var funcs=[];
+ for (var k=0;k<10;k++){
+     funcs.push(function(){
+         console.log(k);
+     })
+ }
+ var funcs2=[];
+ for (var k=0;k<10;k++){
+     funcs2.push((function(value){
+         return function(){
+             console.log(value);
+         }
+     }(k)));
+ }
+
+ funcs2.forEach(function(func){
+     func();
+ });
+
+ var funcs3=[];
+ for (let l=0;l<10;l++){
+     funcs3.push(function(){
+         console.log(l);
+     })
+ }
+ funcs3.forEach(function(func){
+     func();
+ });
+for (var i=0;i<10;i++){
+    //process(items[i]);
+}
+console.log(i);
+
+for (let j=0;j<10;j++){
+
+}
+// j is not defined
+console.log(j);
+</script>
+</html>

@@ -8,22 +8,29 @@
 
 </body>
 <script type="application/javascript">
+
+    getValue1();
+    getValue2();
+    getValue3();
     //var声明以及变量提升(Hoisting)机制
     function getValue1(condition){
         if (condition){
             var value="blue";
             return value;
         } else  {
+            alert(value);
             return null
+
         }
     }
     //等同于
     function getValue2(condition){
-        var value
+        var value;
         if (condition){
              value="blue";
             return value;
         } else  {
+            alert(value);
             return null
         }
     }
@@ -34,6 +41,7 @@
             let value="blue";
             return value;
         } else  {
+            alert(value);
             return null
         }
     }
