@@ -7,4 +7,55 @@
 <body>
 
 </body>
+<script type="application/javascript">
+    function makeRequest(url,timeout,callback){
+        timeout=timeout||2000;
+        callback=callback||function(){};
+    }
+
+    function makeRequest(url,timeout,callback){
+        timeout=(typeof timeout!=="undifined")?timeout:2000;
+        timeout=(typeof callback!=="undefined")?callback:function () {
+
+        }
+    }
+
+    function makeRequest3(url,timeout=2000,callback=function(){}) {
+
+    }
+
+    function mixArgs(first,second) {
+        console.log(first===arguments[0]);
+        console.log(second===arguments[1]);
+        first="c";
+        second="d";
+        console.log(first===arguments[0]);
+        console.log(second===arguments[1]);
+    }
+    mixArgs("a","b");
+
+    function mixArgs2(first,second) {
+        "use strict";
+        console.log(first===arguments[0]);
+        console.log(second===arguments[1]);
+        first="C";
+        second="d";
+        console.log(first===arguments[0]);
+        console.log(second===arguments[1]);
+    }
+
+    mixArgs2("a","b");
+
+
+    function mixArgs3(first,second="b") {
+        console.log(arguments.length);
+        console.log(first===arguments[0]);
+        console.log(second==arguments[1]);
+        first="C";
+        second="d";
+        console.log(first===arguments[0]);
+        console.log(second==arguments[1]);
+    }
+    mixArgs3("A");
+</script>
 </html>
