@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="application/javascript">
+function getValue() {
+    return 5;
+}
+
+function add(first,second=getValue()){
+    return first+second;
+}
+
+console.log(add(1,1));
+console.log(add(1));
+
+let value=5;
+
+function getValue1() {
+    return value++;
+}
+
+function add1(first,second=getValue1()){
+    return first+second;
+}
+
+console.log(add1(1,1));
+console.log(add1(1));
+console.log(add1(1));
+</script>
+</html>
