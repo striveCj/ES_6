@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script type="application/javascript">
+    var add=new Function("first","seccond","return first+seccond");
+    console.log(add(1,1));
+
+    var add2=new Function("first","second=first","return first+second");
+    console.log(add2(1,1));
+    console.log(add2(1));
+
+    var pickFirst=new Function("...args","return args[0]")
+    console.log(pickFirst(1,2))
+</script>
+</html>
