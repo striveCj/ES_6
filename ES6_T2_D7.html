@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+let value1=25,value2=50;
+console.log(Math.max(value1,value2));
+
+let values=[25,50,75,100]
+    console.log(Math.max.apply(Math,values));
+    console.log(Math.max(...values));
+    console.log(Math.max(...values,200));
+
+
+    function doSomething(){
+
+    }
+    var doAnotherThing=function(){
+
+    };
+    console.log(doSomething.name);
+    console.log(doAnotherThing.name);
+
+    var doSomething1=function doAnotherThing1 () {
+
+    };
+    var person={
+        get firstName(){
+            return "jake";
+        },
+        sayName:function () {
+            console.log(this.name);
+        }
+    };
+
+    console.log(doSomething1.name);
+    console.log(person.sayName.name);
+    console.log(person.firstName.name);
+
+    var doSomething2=function(){
+
+    }
+
+    console.log(doSomething2.bind().name);
+    console.log((new Function()).name);
+</script>
+</html>
