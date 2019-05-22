@@ -7,4 +7,43 @@
 <body>
 
 </body>
+<script>
+function  Person(name){
+    if (this instanceof Person){
+        this.name=name;
+    } else  {
+        throw new Error("必须通过new关键字来调用Person")
+    }
+}
+
+var person=new Person("Nicholas");
+var notAPerson=Person.call(person,"Nicholas");
+
+
+function Person2(name) {
+    if (typeof new.target!=="undifined"){
+        this.name=name;
+    } else  {
+        throw new Error("必须通过new关键字来调用Person")
+    }
+}
+var person2=new Person2("Nicholas");
+var notAPerson2=Person2.call(person2,"Michae1");
+
+function Person3(name){
+    if (typeof new.target===Person3)
+    {
+        this.name=name;
+    }else{
+        throw new Error("必须通过new关键字来调用Person")
+    }
+}
+
+function AnotherPerson(name) {
+    Person3.call(this,name);
+}
+
+var person=new Person3("Nicholas");
+var anotherPerson=new AnotherPerson("Nicholas");
+</script>
 </html>
