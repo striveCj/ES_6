@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let reflect=value=>value;
+
+    let reflect2=function(value){
+        return value;
+    };
+
+    let sum=(num1,num2)=>num1+num2;
+    let sum2=function(num1,num2){
+        return num1+num2;
+    };
+    let sum3=(num1,num2)=>{
+        return num1+num2;
+    };
+
+
+    let getName=()=>"Nicholas";
+    let getName2=function () {
+        return "Nicholas";
+    }
+
+    let getTempItem=id=>({id:id,name:"Temp"});
+    let getTempItem2=function (id) {
+        return {
+            id:id,
+            name:"Temp"
+        }
+    }
+
+    let person=function (name) {
+        return {
+            getName:function () {
+                return name;
+            }
+        }
+    }("Nicholas");
+    console.log(person.getName());
+
+    let person2=((name)=>{
+        return{
+            getName:function () {
+                return name;
+            }
+        };
+    })("Nicholas");
+    console.log(person2.getName());
+</script>
+</html>
