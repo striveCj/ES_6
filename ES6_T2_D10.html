@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var result=values.sort(function(a,b){
+        return a-b;
+    });
+    var result1=values.sort((a,b)=>a-b);
+
+    function createArrowFunctionReturningFirstArg(){
+        return ()=>arguments[0];
+    }
+    var arrowFunction=createArrowFunctionReturningFirstArg(5);
+    console.log(arrowFunction());
+
+    var comparator=(a,b)=>a-b;
+    console.log(typeof comparator);
+    console.log(comparator instanceof Function);
+
+    var sum=(sum1,num2)=>num1+num2;
+    console.log(sum.call(null,1,2));
+    console.log(sum.apply(null,[1,2]));
+    var boundSum=sum.bind(null,1,2);
+
+    console.log(boundSum;)
+
+</script>
+</html>
