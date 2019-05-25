@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+function factorial(n){
+    if (n<=1){
+        return 1;
+    } else   {
+        return n*factorial(n-1);
+    }
+}
+
+function factproal2(n,p=1) {
+    if (n<=1){
+        return 1*p;
+    } else {
+        let result=n*p;
+        return factorial2(n-1,result);
+    }
+}
+</script>
+</html>
