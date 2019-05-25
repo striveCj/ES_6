@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //ES5对象简写属性初始值
+    function createPerson(name,age) {
+        return {
+            name:name,
+            age:age
+        }
+    }
+    //ES6对象简写属性初始值
+    function createPerson2(name,age) {
+        return{
+            name,
+            age
+        };
+    }
+    //ES5对象方法定义
+    var person={
+        name:"Nicholas",
+        sayName:function (){
+            console.log(this.name);
+        }
+    };
+    //ES6对象方法简写
+    var person2={
+        name:"Nicholas",
+        sayName(){
+            console.log(this.name);
+        }
+    };
+</script>
+</html>
