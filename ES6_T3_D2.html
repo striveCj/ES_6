@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var person={},
+        lastName="last name";
+    person["first name"]="Nicholas";
+    person[lastName]="Zakas";
+    console.log(person["first name"]);
+    console.log(person[lastName]);
+
+
+    var person1={
+        "first name":"Nicholas"
+    };
+    console.log(person1["first name"]);
+
+
+    let lastName2="last name";
+    let person2={
+        "first name":"Nicholas",
+        [lastName2]:"Zakas"
+    };
+    console.log(person2["first name"]);
+    console.log(person2[lastName2]);
+
+
+    var suffix=" name";
+    var person3={
+        ["first"+suffix]:"Nicholas",
+        ["last"+suffix]:"zakas"
+    };
+    console.log(person3["first name"]);
+    console.log(person3["last name"]);
+</script>
+</html>
