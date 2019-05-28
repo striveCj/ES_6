@@ -31,5 +31,36 @@
         return receiver;
     }
 
+    function EventTarget(){}
+    EventTarget.prototype={
+        constructor:EventTarget,
+        emit:function(){},
+        on:function () {
+
+        }
+    };
+    var myObject={};
+    mixin(myObject,EventTarget.prototype);
+    myObject.emit("somethingChanged");
+
+    var myObject2={};
+    Object.assign(myObject2,EventTarget.prototype);
+    myObject2.emit("somethingChanged");
+
+    var receiver={};
+    Object.assign(receiver,{type:'js',name:"file.js"},{type:"css"});
+    console.log(receiver.type);
+    console.log(receiver.name);
+
+    var receiver2={},
+        supplier={
+        get name(){
+            return "file.js"
+        }
+        };
+    Object.assign(receiver2,supplier);
+    var descriptor=Object.getOwnPropertyDescriptor(receiver2,"name");
+    console.log(descriptor.value);
+    console.log(descriptor.name);
 </script>
 </html>
