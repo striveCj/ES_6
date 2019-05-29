@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let person={
+        getGreeting(){
+            return "Hello";
+        }
+    };
+
+    let dog={
+        getGreeting(){
+            return "Woof";
+        }
+    };
+
+    let friend=Object.create(person);
+    console.log(friend.getGreeting());
+    console.log(Object.getPrototypeOf(friend)===person);
+
+    Object.setPrototypeOf(friend,dog);
+    console.log(friend.getGreeting());
+    console.log(Object.getPrototypeOf(friend)===dog);
+
+    let person1={
+        getGreeting(){
+            return "Hello";
+        }
+    };
+    let dog1={
+        getGreeting() {
+            return "Woof";
+        }
+    };
+//super关键字只能在简写方法中使用
+    let frield1={
+        getGreeting(){
+            //return Object.getPrototypeOf(this).getGreeting.call(this)+",hi";
+            return super.getGreeting()+",hi";
+        }
+    };
+
+    Object.setPrototypeOf(friend1,person1);
+    console.log(friend1.getGreeting());
+    console.log(Object.getPrototypeOf(frield1)===person1);
+
+    Object.setPrototypeOf(frield1,dog1);
+    console.log(frield1.getGreeting());
+    console.log(Object.getPrototypeOf(friend1)===dog1);
+
+
+</script>
+</html>
