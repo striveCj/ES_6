@@ -7,4 +7,43 @@
 <body>
 
 </body>
+<script>
+let node={
+    type:"Identifier",
+    name:"foo",
+    loc:{
+        start:{
+            line:1,
+            column:1
+        },
+        end:{
+            line:1,
+            column: 4
+        }
+    }
+};
+let{loc:{start}}=node;
+console.log(start.line);
+console.log(start.column);
+
+let {loc:{start:localStart}}=node;
+console.log(localStart.line);
+console.log(localStart.column);
+
+
+let colors=["Red","Greed","Blue"];
+let [firstColor,secondColor]=colors;
+console.log(firstColor);
+console.log(secondColor);
+
+let colors2=["red","green","blue"];
+let [,,thirdColor]=colors2;
+console.log(thirdColor);
+
+
+let a=1,b=2;
+[a,b]=[b,a];
+console.log(a);
+console.log(b);
+</script>
 </html>
