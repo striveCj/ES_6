@@ -7,4 +7,43 @@
 <body>
 
 </body>
+<script>
+    let firstName=Symbol("first name");
+    let person={};
+    person[firstName]="Nicholas";
+    console.log(person[firstName]);
+    console.log("first name" in person);
+    console.log(firstName);
+    console.log(typeof firstName);
+
+    let startName=Symbol("start name");
+    let person2={
+        [startName]:"Nicholas"
+    }
+
+    Object.defineProperty(person2,firstName,{writable:false});
+
+    let endName=Symbol("end name");
+    Object.defineProperties(person2,{
+        [endName]:{
+            value:"Zakas",
+            writable: false
+        }
+    });
+    console.log(person2[startName]);
+    console.log(person2[endName]);
+
+    let uid=Symbol.for("uid");
+    let object={};
+
+    object[uid]="12345";
+
+    console.log(object[uid]);
+    console.log(uid);
+
+    let uid2=Symbol.for("uid");
+    console.log(uid===uid2);
+    console.log(object[uid2]);
+    console.log(uid2)
+</script>
 </html>
