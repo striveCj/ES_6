@@ -7,4 +7,44 @@
 <body>
 
 </body>
+<script>
+    let uid=Symbol.for("uid"),
+    desc=String(uid);
+    console.log(desc);
+
+    let object={
+        [uid]:"12345"
+    };
+    let symbols=Object.getOwnPropertySymbols(object);
+    console.log(symbols.length);
+    console.log(symbols[0]);
+    console.log(object[symbols[0]]);
+
+    function MyObject(){
+
+    }
+    Object.defineProperty(MyObject,Symbol.hasInstance,{
+        value:function(v){
+            return false;
+        }
+    });
+
+    let obj=new MyObject();
+    console.log(obj instanceof MyObject);
+
+
+    function  SpecialNumber() {
+
+    }
+    Object.defineProperty(SpecialNumber,Symbol.hasInstance,{
+        value:function (v) {
+            return (v instanceof Number)&&(v>=1&&v<=100);
+        }
+    });
+    var two=new Number(2),
+        zero=new Number(0);
+
+    console.log(two instanceof SpecialNumber);
+    console.log(zero instanceof SpecialNumber);
+</script>
 </html>
