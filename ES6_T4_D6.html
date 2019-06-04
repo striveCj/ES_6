@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let colors1=["red","greed"],
+        colors2=colors1.concat(["blue","black"]);
+    console.log(colors2.length);
+    console.log(colors2);
+    let colors3=colors2.concat(["white","pink"],"brown");
+    console.log(colors3.length);
+    console.log(colors3);
+
+    let collection={
+        0:"Hello",
+        1:"world",
+        length:2,
+        [Symbol.isConcatSpreadable]:true
+    };
+
+    let messages=["Hi"].concat(collection);
+    console.log(messages.length);
+    console.log(messages);
+
+    let hasLengthOf10={
+        [Symbol.match]:function (value) {
+            return value.length===10?[value.substring(0,10)]:null;
+        },
+        [Symbol.replace]:function (value,replacement) {
+            return value.length===10?replacement+value.substring(10):value;
+        },
+        [Symbol.search]:function (value) {
+            return value.length===10?0:-1;
+        },
+        [Symbol.split]:function(value){
+            return value.length===10?["",""]:[value];
+        }
+    };
+    let message1="Hello world",
+        message2="Hello John";
+    let metch1=message1.match(hasLengthOf10),
+        match2=message2.match(hasLengthOf10);
+
+    console.log(metch1);
+    console.log(match2);
+
+    let replace1=message1.replace(hasLengthOf10),
+        replace2=message2.replace(hasLengthOf10);
+    console.log(replace1);
+    console.log(replace2);
+
+
+    let search1=message1.search(hasLengthOf10),
+        search2=message2.search(hasLengthOf10);
+    console.log(search1);
+    console.log(search2);
+
+    let split1=message1.split(hasLengthOf10),
+        split2=message2.split(hasLengthOf10);
+    console.log(split1);
+    console.log(split2);
+</script>
+</html>
