@@ -7,5 +7,14 @@
 <body>
 
 </body>
-<script></script>
+<script>
+function isArray(value){
+    return Object.prototype.toString.call(value)==="[object Array]";
+}
+console.log(isArray([]));
+
+function supportsNativeJSON() {
+    return typeof JSON!=="undefined"&&Object.prototype.toString.call(JSON)==="[Object JSON]";
+}
+</script>
 </html>
