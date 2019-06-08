@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    var es5set=Object.create(null);
+    es5set.foo=true;
+    if (es5set.foo){
+
+    }
+
+    var es5map =Object.create(null);
+    es5map.foo="bar";
+    var value=es5map.foo;
+    console.log(value);
+
+    let set =new Set();
+    set.add(5);
+    set.add("5");
+    set.add(5);
+    console.log(set.size);
+    let key1={};
+    let key2={};
+    set.add(key1);
+    set.add(key2);
+    console.log(set.size);
+
+    let set2=new Set([1,2,3,4,5,5,5,5]);
+    console.log(set2.size);
+    console.log(set2.has(5));
+    set2.delete(5);
+    console.log(set2.has(5));
+    console.log(set2.size);
+    set.clear();
+    console.log(set2.size);
+    console.log(set2.has(6));
+
+
+</script>
+</html>
