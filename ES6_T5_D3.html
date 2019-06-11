@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let set=new Set(),
+        key={};
+    set.add(key);
+    console.log(set.size);
+    key=null;
+    console.log(set.size);
+    key=[...set][0];
+    console.log(key);
+
+
+    let set2=new WeakSet(),
+        key2={};
+    set2.add(key2);
+    console.log(set2.has(key2));
+    set2.delete(key2);
+    console.log(set2.has(key2));
+
+    let key3={},
+        key4={},
+        set3=new WeakSet([key3,key4]);
+    console.log(set3.has(key3));
+    console.log(set3.has(key4));
+
+    let set4=new WeakSet();
+    let key5={};
+    set4.add(key5);
+    console.log(set.has(key));
+
+    key=null;
+    console.log(set.has(key));
+
+</script>
+</html>
