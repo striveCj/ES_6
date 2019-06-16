@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let map=new Map([["name","Cj"],["age","25"]]);
+    console.log(map.has("name"));
+    console.log(map.get("name"));
+    console.log(map.has("age"));
+    console.log(map.get("age"));
+    console.log(map.size);
+
+    map.forEach(function(value,key,ownerMap){
+        console.log(key+"  "+value);
+        console.log(ownerMap===map);
+    })
+</script>
+</html>
