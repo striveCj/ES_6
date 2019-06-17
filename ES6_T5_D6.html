@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let map=new WeakMap(),element=document.querySelector(".element");
+    map.set(element,"Original");
+    let value=map.get(element);
+    console.log(value);
+
+    element.parentNode.removeChild(element);
+    element=null;
+
+    let key1={}.key2={},map=new WeakMap([[key1,"Hello"],[key2,42]]);
+    console.log(map.has(key1));
+    console.log(map.get(key1));
+    console.log(map.has(key2));
+    console.log(map.get(key2));
+</script>
+</html>
