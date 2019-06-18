@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+   let map=new WeakMap(),element=document.querySelector(".element");
+   map.set(element,"Orifinal");
+   comsole.log(map.has(element));
+   console.log(map.get(element));
+
+   map.delete(element);
+   console.log(map.has(element));
+   console.log(map.get(element));
+
+
+   var Person=(function(){
+       var privateData={},
+           privateId=0;
+       function Person(name){
+           Object.defineProperty(this,"_id",{value:privateId++});
+           privateData[this._id]={
+               name:name
+           };
+       }
+       Person.prototype.getName=function () {
+           return privateData[this._id].name;
+       };
+       return Person;
+   }());
+
+   let Person=(function(){
+       let privateData=new WeakMap();
+       function Person(name){
+           privateData.set(this,{name:name});
+       }
+       Person.prototype.getName=function(){
+           return privateData.get(this).name;
+       };
+       return Person;
+   })
+</script>
+</html>
