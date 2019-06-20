@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let createIterator=function *(items) {
+        for (let i=0;i<items.length;i++){
+            yield items[i];
+        }
+    };
+    let iterator=createIterator([1,2,3]);
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+
+    let o={
+        createIterator:function *(items) {
+            for (let j=0;j<items.length;j++) {
+                yield items[j];
+            }
+        },
+        *createIterator2(items){
+            for (let j=0;j<items.length;j++) {
+                yield items[j];
+            }
+        }
+    };
+
+    let iterator2=o.createIterator([4,5,6]);
+    let iterator3=o.createIterator2([7,8,9]);
+
+    let values=[1,2,3];
+
+    for(let num of values){
+        console.log(num);
+    }
+
+    let iterator4=values[Symbol.iterator]();
+    console.log(iterator4.next());
+    console.log(iterator4.next());
+    console.log(iterator4.next());
+    console.log(iterator4.next());
+    console.log(iterator4.next());
+</script>
+</html>
