@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function *createNumberIterator(){
+        yield 1;
+        yield 2;
+    }
+    function *createColorIterator(){
+        yield "red";
+        yield "green";
+    }
+    function *createCombinedIterator() {
+        yield *createNumberIterator();
+        yield *createColorIterator();
+        yield true;
+    }
+
+    var iterator=createCombinedIterator();
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+    console.log(iterator.next());
+
+    function *createNumberIterator2(){
+        yield 1;
+        yield 2;
+        return 3;
+    }
+
+    function *createRepeatingIterator(count) {
+        for (let i=0;i<count;i++){
+            yield "repeat";
+        }
+    }
+
+    function *createCombinedIterator2() {
+        let result=yield *createNumberIterator2();
+        yield result;
+        yield *createRepeatingIterator(result);
+    }
+    var iterator2=createCombinedIterator2();
+
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+    console.log(iterator2.next());
+
+    function  run(taskDef) {
+        let task=taskDef();
+        let result=task.next();
+        function step() {
+            if (!result.done){
+                result=task.next();
+                step();
+            }
+        }
+        step();
+    }
+    run(function *() {
+        console.log(1);
+        yield;
+        console.log(2);
+        yield ;
+        console.log(3);
+    })
+</script>
+</html>
