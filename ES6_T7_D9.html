@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function Rectangle(length,width){
+        this.length=length;
+        this.width=width;
+    }
+
+    Rectangle.prototype.getArea=function () {
+        return this.length*this.width;
+    }
+
+    function getBase(){
+
+        return Rectangle;
+    }
+
+    class Square extends  getBase(){
+        constructor(length){
+            super(length,length);
+        }
+    }
+
+    var x=new Square(3);
+    console.log(x.getArea());
+    console.log(x instanceof Rectangle);
+
+
+
+</script>
+</html>
