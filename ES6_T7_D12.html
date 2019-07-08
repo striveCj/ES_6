@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class Rectangle{
+        constructor(length,width){
+            console.log(new.target===Rectangle);
+            this.length=length;
+            this.width=width;
+        }
+    }
+
+    var obj=new Rectangle(3,4);
+
+    class Square extends  Rectangle{
+        constructor(length){
+            super(length,length)
+        }
+    }
+    var obj=new Square(3);
+
+    class Shape{
+        constructor(){
+            if (new.target===Shape){
+                throw new Error("这个类不能被直接实例化");
+            }
+        }
+    }
+
+    class Rectangle2 extends Shape{
+        constructor(length,width){
+            super();
+            this.length=length;
+            this.width=width;
+        }
+    }
+
+    var x=new Shape();
+    var y=new Rectangle2(3,4);
+    console.log(y instanceof Shape);
+</script>
+</html>
