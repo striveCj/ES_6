@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function makeArray(arrayLike){
+        var result=[];
+        for (var i=0,len=arrayLike.length;i<len;i++){
+            return push(arrayLike[i]);
+        }
+        return result;
+    }
+
+    function makeArray2(arrayLike){
+        return Array.prototype.slice.call(arrayLike);
+    }
+
+    function doSomething() {
+        var arg=makeArray(arguments);
+        var arg2=makeArray2(arguments);
+        var arg3=Array.from(arguments);
+    }
+
+    function translate(){
+        return Array.from(arguments,(value)=>value+1);
+    }
+
+    let numbers=translate(1,2,3);
+    console.log(numbers);
+
+    let helper={
+        diff:1,
+        add(value){
+            return value+this.diff;
+        }
+    }
+    function translate2(){
+        return Array.from(arguments,helper.add,helper);
+    }
+
+    let numbers2=translate2(1,2,3);
+    console.log(numbers2);
+
+    let numbers3={
+        *[Symbol.iterator](){
+            yield 1;
+            yield 2;
+            yield 3;
+        }
+    }
+
+    let number3=Array.from(numbers3,(value)=>value+1);
+    console.log(number3);
+
+
+</script>
+</html>
