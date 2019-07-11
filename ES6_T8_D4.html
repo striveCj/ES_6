@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let buffer=new ArrayBuffer(10);
+    console.log(buffer.byteLength);
+
+    let buffer2=buffer.slice(4,6);
+    console.log(buffer2.byteLength);
+
+    let buffer3=new ArrayBuffer(10),
+    view=new DataView(buffer3),
+    view2=new DataView(buffer3,5,2);
+    console.log(view.buffer===buffer3);
+    console.log(view2.buffer===buffer3);
+    console.log(view.byteLength);
+    console.log(view2.byteLength);
+    console.log(view.byteOffset);
+    console.log(view2.byteOffset);
+</script>
+</html>
