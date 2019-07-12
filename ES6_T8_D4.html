@@ -23,5 +23,55 @@
     console.log(view2.byteLength);
     console.log(view.byteOffset);
     console.log(view2.byteOffset);
+
+    let ints=new Int16Array(2),
+    floats=new Float32Array(5);
+
+    console.log(ints.byteLength);
+    console.log(ints.length);
+
+    console.log(floats.byteLength);
+    console.log(floats.length);
+
+let ints1=new Int16Array([25,50]),
+    ints2=new Int32Array(ints1);
+
+console.log(ints1.buffer===ints2.buffer);
+console.log(ints.byteLength);
+console.log(ints.length);
+console.log(ints1[0]);
+console.log(ints1[1]);
+
+console.log(ints2.byteLength);
+console.log(ints2.length);
+console.log(ints2[0]);
+console.log(ints2[1]);
+
+
+let ints3=new Int16Array([25,50]);
+console.log(ints3.length);
+console.log(ints3[0]);
+console.log(inst3[1]);
+ints3[0]=1;
+ints3[1]=2;
+    console.log(ints3[0]);
+    console.log(inst3[1]);
+
+    let mapped=ints3.map(v=>v*2);
+
+    console.log(mapped.length);
+    console.log(mapped[0]);
+    console.log(mapped[1]);
+    console.log(mapped instanceof Int16Array);
+
+    let ints4=new Int16Array([25,50]),
+        intsArray=[...ints];
+    console.log(intsArray instanceof Array);
+    console.log(intsArray[0]);
+    console.log(intsArray[1]);
+
+
+
+
 </script>
 </html>
