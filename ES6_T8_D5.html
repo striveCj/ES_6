@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let ints=Int16Array.of(25,50),
+        floats=Float32Array.from([1.5,2.5]);
+
+    console.log(ints instanceof Int16Array);
+    console.log(floats instanceof Float32Array);
+
+    console.log(ints.length);
+    console.log(ints[0]);
+    console.log(ints[1]);
+    console.log(floats.length);
+    console.log(floats[0]);
+    console.log(floats[1]);
+
+    let ints2=new Int16Array([25,50]);
+
+    console.log(ints2 instanceof Array);
+    console.log(Array.isArray(ints2));
+
+    let ints3=new Int16Array([25,30]);
+    console.log(ints3.length);
+    console.log(ints3[0]);
+    console.log(ints3[1]);
+
+    ints3[2]=5;
+
+    console.log(ints3.length);
+    console.log(ints[2]);
+
+    let ints4=new Int16Array(["hi"]);
+    console.log(ints4.length);
+    console.log(ints[0]);
+
+    let ints5=new Int16Array([25,50]),
+        mapped=ints5.map(v=>"hi");
+    console.log(mapped.length);
+    console.log(mapped[0]);
+    console.log(mapped[1]);
+
+    console.log(mapped instanceof Int16Array);
+    console.log(mapped instanceof Array);
+
+    let ints6=new Int16Array(4);
+    ints6.set([25,50]);
+    ints6.set([75,100],2);
+    console.log(ints6.toString());
+
+
+    let subints1=ints6.subarray(),
+        subints2=ints6.subarray(2),
+        subints3=ints6.subarray(1,3);
+
+    console.log(subints1);
+    console.log(subints2);
+    console.log(subints3);
+</script>
+</html>
