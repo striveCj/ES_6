@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let promise=new Promise(function (resolve,reject) {
+        console.log("Promise");
+        resolve();
+    });
+
+    promise.then(function(){
+       console.log("Resolved.")
+    });
+    console.log("Hi!");
+
+
+    let promise2=Promise.resolve(42);
+    promise2.then(function (value) {
+        console.log(value);
+    })
+    let promise3=Promise.reject(42);
+    promise3.catch(function (value) {
+        console.log(value);
+    })
+
+    let thenable={
+        then:function(resolve,reject){
+            resolve(42);
+        }
+    }
+    let p1=Promise.resolve(thenable);
+    p1.then(function(value){
+        console.log(value);
+    })
+    let thenable2={
+        then:function (resolve,reject) {
+            reject(42);
+        }
+    }
+    let p2=Promise.reject(thenable2);
+    p2.catch(function (value) {
+        console.log(value);
+    })
+</script>
+</html>
