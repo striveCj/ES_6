@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let rejected;
+    window.onunhandledrejection=function (event) {
+        console.log(event.type);
+        console.log(event.reason.message);
+        console.log(rejected===event.promise);
+    }
+
+    window.onrejectionhandled=function (event) {
+        console.log(event.type);
+        console.log(event.reason.message);
+        console.log(rejected===event.promise);
+    }
+
+    rejected=Promise.reject(new Error("Explosion!"));
+
+</script>
+</html>
