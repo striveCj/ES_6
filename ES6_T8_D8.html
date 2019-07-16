@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let map=new Map();
+    window.onunhandledrejection=function (event) {
+        map.set(event.promise,event.reason);
+    }
+    window.onrejectionhandled=function (event) {
+        map.delete(event.promise);
+    }
+
+    setInterval(function(){
+        map.forEach(function(reason,promise){
+            handledRejection(promise,reason);
+        })
+        map.clear();
+    },60000);
+</script>
+</html>
