@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let colors=["red","green","blue"];
+    console.log(colors.length);
+    colors[3]="black";
+    console.log(colors.length);
+    console.log(colors[3]);
+    colors.length=2;
+    console.log(colors.length);
+    console.log(colors[3]);
+    console.log(colors[2]);
+    console.log(colors[1]);
+
+    let target={};
+    let proxy=new Proxy(target,{});
+    proxy.name="proxy";
+    console.log(proxy.name);
+    console.log(target.name);
+
+    target.name="target";
+    console.log(proxy.name);
+    console.log(target.name);
+</script>
+</html>
