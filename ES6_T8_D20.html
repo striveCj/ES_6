@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let target={};
+    let proxy=new Proxy(target,{
+        isExtensible(target) {
+            return Reflect.isExtensible(target);
+        },
+        preventExtensions(target) {
+            return Reflect.preventExtensions(target);
+        }
+    });
+
+    console.log(Object.isExtensible(target));
+    console.log(Object.isExtensible(proxy));
+
+    Object.propertyIsEnumerable(proxy);
+
+    console.log(Object.isExtensible(target));
+    console.log(Object.isExtensible(proxy));
+
+
+    let target2={};
+    let proxy2=new Proxy(target2,{
+        isExtensible(target) {
+            return Reflect.isExtensible(target);
+        },
+        preventExtensions(target) {
+            return false;
+        }
+    });
+    console.log(Object.isExtensible(target2));
+    console.log(Object.isExtensible(proxy2));
+
+    Object.propertyIsEnumerable(proxy2);
+
+    console.log(Object.isExtensible(target2));
+    console.log(Object.isExtensible(proxy2));
+</script>
+</html>
