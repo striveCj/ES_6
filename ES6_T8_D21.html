@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let proxy=new Proxy({},{
+        defineProperty(target, p, attributes) {
+            return Reflect.defineProperty(target,p,attributes);
+        },
+        getOwnPropertyDescriptor(target, p) {
+            return Reflect.getOwnPropertyDescriptor(target,p);
+        }
+    });
+
+    Object.defineProperty(proxy,"name",{
+        value:"proxy"
+    });
+
+    console.log(proxy.name);
+
+    let descriptor=Object.getOwnPropertyDescriptor(proxy,"name");
+
+    console.log(descriptor.value);
+</script>
+</html>
