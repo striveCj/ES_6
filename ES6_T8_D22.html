@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let target={};
+    let result1=Object.defineProperty(target,"name",{value:"target"});
+    console.log(target===result1);
+    let result2=Reflect.defineProperty(target,"name",{value:"reflect"});
+    console.log(result2);
+
+    let descriptor1=Object.getOwnPropertyDescriptor(2,"name");
+    console.log(descriptor1);
+
+    let descriptor2=Reflect.getOwnPropertyDescriptor(2,"name");
+
+    let proxy=new Proxy({},{
+        ownKeys(target) {
+            return Reflect.ownKeys(target).filter(key=>{
+                return typeof key!="string"||key[0]!="_";
+            });
+        }
+    });
+
+    let nameSymbol=Symbol("name");
+
+    proxy.name="proxy";
+    proxy._name="private";
+    proxy[nameSymbol]="symbol";
+
+    let names=Object.getOwnPropertyNames(proxy),
+        keys=Object.keys(proxy),
+        symbols=Object.getOwnPropertySymbols(proxy);
+
+    console.log(name.length);
+    console.log(names[0]);
+    console.log(key.length);
+    console.log(keys[0]);
+    console.log(symbols.length);
+    console.log(symbols[0]);
+
+</script>
+</html>
