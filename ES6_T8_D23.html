@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let target=function(){return 42},
+        proxy=new Proxy(target,{
+            apply:function (trapTarget,thisArg,argumentList) {
+                return Reflect.apply(trapTarget,thisArg,argumentList)；
+            },
+    constructor:function (trapTarget,argumentList) {
+        return Reflect.construct(trapTarget,argumentList);
+    }
+        });
+    console.log(typeof proxy);
+    console.log(proxy());
+    var instance=new proxy();
+    console.log(instance instanceof proxy);
+    console.log(instance instanceof target);
+</script>
+</html>
