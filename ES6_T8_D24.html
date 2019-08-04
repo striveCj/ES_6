@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function  sum(...values) {
+        return values.reduce((previousValue, currentValue) => previousValue+currentValue,0);
+    }
+    let sumProxy=new Proxy(sum,{
+        apply:function (trapTarget,thisArg,argumentList) {
+            argumentList.forEach((arg)=>{
+                if (typeof arg!="number"){
+                    throw  new TypeError("所有参数必须是数字。");
+                }
+            });
+            return Reflect.apply(trapTarget,thisArg,argumentList);
+        },
+        construct(target, argArray, newTarget) {
+            throw new TypeError("该函数不可能通过new来调用");
+        }
+    });
+
+    console.log(sumProxy(1,2,3,4));
+
+    console.log(sumProxy(1,2,"3",4));
+
+    let result=new sumProxy();
+
+</script>
+</html>
