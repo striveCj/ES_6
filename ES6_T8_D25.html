@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+function Numbers(...values){
+    if (typeof new.target==="undefined"){
+        throw new TypeError("该函数必须通过new来调用");
+    }
+    this.values=values;
+}
+
+let instance=new Numbers(1,2,3,4);
+console.log(instance.values);
+
+Numbers(1,2,3,4);
+
+let NumbersProxy=new Proxy(Numbers,{
+    apply(target, thisArg, argArray) {
+        return Reflect.construct(target,argArray);
+    }
+})
+
+    let instance=NumbersProxy(1,2,3,4);
+console.log(instance.values);
+
+</script>
+</html>

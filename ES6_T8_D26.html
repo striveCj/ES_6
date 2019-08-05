@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    class AbstractNumbers{
+        constructor(...values){
+            if(new.target===AbstractNumbers){
+                throw new TypeError("此函数必须被继承。")
+            }
+            this.values=values;
+        }
+    }
+
+    class Numbers extends  AbstractNumbers{}
+
+    let instance=new numbers(1,2,3,4);
+    console.log(instance.values());
+
+    new AbstractNumbers(1,2,3,4);
+
+    let AbstractNumbersProxy=new Proxy(AbstractNumbers,{
+        construct(target, argArray) {
+            return Reflect.construct(target,argArray,function () {
+
+            })
+        }
+    })
+    let instance=new AbstractNumbersProxy(1,2,3,4);
+    console.log(instance.values);
+</script>
+</html>
