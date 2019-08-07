@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function toUnit32(value) {
+        return Math.floor(Math.abs(Number(value)))%Math.pow(2,32);
+    }
+
+    function isArrayIndex(key) {
+        let numericKey=toUnit32(key);
+        return String(numericKey)==key&&numericKey<(Math.pow(2,32)-1);
+    }
+
+    function createMyArray(length=0) {
+        return new Proxy({length},{
+            set(target, p, value) {
+                let currentLength=Reflect.get(target,"length");
+                if (isArrayIndex(p)){
+                    let numerickey=Number(p);
+                    if (numerickey>=currentLength){
+                        Reflect.set(target,"length",numerickey+1);
+                    }
+                }
+                return Reflect.set(target,p,value)
+            }
+        })
+    }
+
+    let colors=createMyArray(3);
+    console.log(colors.length);
+
+    colors[0]="red";
+    colors[1]="green";
+    colors[2]="blue";
+
+    console.log(colors.length);
+    colors[3]="black";
+    console.log(colors.length);
+</script>
+</html>
