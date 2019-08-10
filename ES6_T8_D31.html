@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    let target={};
+    let newTarget=Object.create(new Proxy(target,{
+        defineProperty(target, p, attributes) {
+            return false;
+        }
+    }));
+
+    Object.defineProperty(newTarget,"name",{
+        value:"newTarget"
+    });
+
+    console.log(newTarget.name);
+    console.log(newTarget.hasOwnProperty("name"));
+
+    let target2={};
+    let thing=Object.create(new Proxy(target2,{
+        get(target, p, receiver) {
+            throw new ReferenceError(`${p} 未找到 `);
+        }
+    }));
+
+    thing.name="thing";
+
+    console.log(thing.name);
+
+    let unknown=thing.unknown;
+
+
+    let target3={};
+    let thing2=Object.create(new Proxy(target3,{
+        set(target, p, value, receiver) {
+            return Reflect.set(target,p,value,receiver);
+        }
+    }));
+
+    console.log(thing2.hasOwnProperty("name"));
+
+    thing2.name="thing";
+
+    console.log(thing2.name);
+    console.log(thing2.hasOwnProperty("name"));
+
+    thing2.name="boo";
+    console.log(thing2.name);
+
+
+    let target4={};
+    let thing3=Object.create(new Proxy(target4,{
+        has(target, p) {
+            return Reflect.has(target,p);
+        }
+    }));
+
+    console.log("name" in thing3);
+    thing3.name="thing";
+    console.log("name" in thing3);
+</script>
+</html>
