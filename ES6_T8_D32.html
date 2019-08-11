@@ -9,7 +9,7 @@
 </body>
 <script>
     function NoSuchProperty(){
-
+//
     }
     NoSuchProperty.prototype=new Proxy({},{get(target, p, receiver) {
         throw new ReferenceError(`${p} 不存在`);
@@ -17,5 +17,35 @@
     let thing =new NoSuchProperty();
 
     let result=thing.name;
+
+    NoSuchProperty.prototype=proxy;
+
+    class Squere extends NoSuchProperty{
+        constructor(length,width){
+            super();
+            this.length=length;
+            this.width=width
+        }
+        getArea(){
+            return this.length*this.width;
+        }
+    }
+
+    let shape=new Squere(2,6);
+    let area1=shape.length*shape.width;
+    console.log(area1);
+
+    let area2=shape.length*shape.wdth;
+    console.log(area2);
+
+    let area3=shape.getArea();
+    console.log(area3);
+
+    let shapeProto=Object.getPrototypeOf(shape);
+    console.log(shapeProto===proxy);
+
+    let secondLevelProto=Object.getPrototypeOf(shapeProto);
+
+    console.log(secondLevelProto===proxy);
 </script>
 </html>
