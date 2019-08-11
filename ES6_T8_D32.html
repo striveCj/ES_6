@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    function NoSuchProperty(){
+
+    }
+    NoSuchProperty.prototype=new Proxy({},{get(target, p, receiver) {
+        throw new ReferenceError(`${p} 不存在`);
+        }});
+    let thing =new NoSuchProperty();
+
+    let result=thing.name;
+</script>
+</html>
